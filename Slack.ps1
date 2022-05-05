@@ -22,6 +22,8 @@
   This is the cusotm webhook url for Slack Incoming WebHooks app.
 .PARAMETER BuildUrl
   The url to a CI build which checked this update info (typically in AppVeyor).
+.PARAMETER MessageTitle
+  The title for the message.
 .PARAMETER MessageFormat
   The format of the message that is meant to be published on slack.
   {0} = The total number of automated packages.
@@ -34,6 +36,7 @@ param(
   $Info,
   [string]$WebHookUrl,
   [string]$BuildUrl = '',
+  [string]$MessageTitle = 'Update AU Packages',
   [string]$MessageFormat = "[Update Status:{0} packages. {1} Updated, {2} Published, {3} Failed]`n{4}",
   [bool]$OnlyWhenChange = $false
 )
@@ -51,7 +54,7 @@ $failedPackages = $Info.error_count.total
 $gistUrl = $Info.plugin_results.Gist -split '\n' | select -Last 1
 $packageCount = $Info.result.all.Length
 
-$messageHeader = if ($BuildUrl) { "<$BuildUrl|Update AU Packages>" } else { 'Update AU Packages' }
+$messageHeader = if ($BuildUrl) { "<$BuildUrl|$MessageTitle>" } else { $MessageTitle }
 $message = ($MessageFormat -f $packageCount, $updatedPackages, $publishedPackages, $failedPackages, $gistUrl)
 $color = if ($failedPackages -gt 0) { 'danger' }
 elseif ($publishedPackages -gt 0) { 'good' }
