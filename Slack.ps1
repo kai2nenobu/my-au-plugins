@@ -71,13 +71,13 @@ else {
 }
 
 $body = @{
-  text        = ''
+  text        = $messageHeader
   attachments = @(
     @{
       color  = $color
       fields = @(
         @{
-          value = "{0}`n{1}" -f $messageHeader, $message
+          value = $message
           short = $False
         }
       )
