@@ -31,6 +31,9 @@
   {2} = The number of published packages.
   {3} = The number of failed packages.
   {4} = The url to the github gist.
+.PARAMETER OnlyWhenChange
+  If true, publish the message only when packages are changed (updated, failed or ignored).
+  If false, always publish the message. (Default is false)
 #>
 param(
   $Info,
