@@ -54,7 +54,7 @@ $updatedPackages = @($Info.result.updated).Count
 $publishedPackages = @($Info.result.pushed).Count
 $ignoredPackages = @($Info.result.ignored).Count
 $failedPackages = $Info.error_count.total
-$gistUrl = $Info.plugin_results.Gist -split '\n' | select -Last 1
+$gistUrl = $Info.plugin_results.Gist -split '\n' | Select-Object -Last 1
 $packageCount = $Info.result.all.Length
 
 $messageHeader = if ($BuildUrl) { "<$BuildUrl|$MessageTitle>" } else { $MessageTitle }
