@@ -1,6 +1,6 @@
 ﻿# Heavily inspired from https://github.com/majkinetor/au/blob/master/AU/Plugins/Gitter.ps1
 <#
-    Copyright 2019-2020 Tsunenobu Kai
+    Copyright 2019-2022 Tsunenobu Kai
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
